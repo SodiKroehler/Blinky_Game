@@ -29,6 +29,11 @@ func _process(delta):
 		$AnimatedSprite.play()
 	else:
 		$AnimatedSprite.stop()
+	if Input.is_action_pressed("ui_hit"):
+		emit_signal("hit")
+		$CollisionShape2D.set_deferred("disabled", true)
+		
+	
 	position += velocity * delta
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
@@ -39,12 +44,19 @@ func _process(delta):
 	
 
 
-func _on_Player_body_entered(body):
-	hide()
-	emit_signal("hit")
-	$CollisionShape2D.set_deferred("disabled", true)
+#func _on_Player_body_entered(body):
+	#hide()
+	#emit_signal("hit")
+	#$CollisionShape2D.set_deferred("disabled", true)
 	
 func start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
+
+
+func _on_Player_hit():
+	take_damage()
+	
+func take_damage():
+	pass

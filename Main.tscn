@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Mob.tscn" type="PackedScene" id=2]
@@ -7,25 +7,43 @@
 [ext_resource path="res://art/House In a Forest Loop.ogg" type="AudioStream" id=5]
 [ext_resource path="res://art/gameover.wav" type="AudioStream" id=6]
 [ext_resource path="res://project_art/artkit_09.png" type="Texture" id=7]
+[ext_resource path="res://project_art/artkit_13.png" type="Texture" id=8]
+[ext_resource path="res://Player.gd" type="Script" id=9]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 192, 64, 0, 0, 0, 0, 256, 64, 0, 0, 0, 0, 256, 128, 0, 0, 0, 0, 192, 128, 0, 0, 0, 0, 192, 64, 0, 0, 0, 0, 192, 64 )
 }
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 1472, 32 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 32, 288 )
+
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
 Mob = ExtResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-anchor_right = 1.0
+anchor_right = 2.876
 anchor_bottom = 1.0
+margin_right = -0.0241699
+margin_bottom = 102.0
 color = Color( 0.305882, 0.0705882, 0.0705882, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
+[node name="Player" type="KinematicBody2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( -3, 3 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -53,13 +71,469 @@ stream = ExtResource( 5 )
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
 
-[node name="artkit_09" type="Sprite" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 1472, 672 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 1472, 32 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 32, 352 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 2912, 352 )
+z_index = 1
+shape = SubResource( 3 )
+
+[node name="artkit_14" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 224, 96 )
+texture = ExtResource( 8 )
+
+[node name="artkit_09" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 32, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_10" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 32, 96 )
+texture = ExtResource( 7 )
+
+[node name="artkit_11" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 32, 160 )
+texture = ExtResource( 7 )
+
+[node name="artkit_12" type="Sprite" parent="StaticBody2D"]
 position = Vector2( 32, 224 )
 texture = ExtResource( 7 )
 
-[node name="artkit_09" type="Sprite" parent="artkit_09"]
-position = Vector2( 0, 64 )
+[node name="artkit_13" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 32, 288 )
 texture = ExtResource( 7 )
+
+[node name="artkit_15" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 32, 352 )
+texture = ExtResource( 7 )
+
+[node name="artkit_16" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 32, 416 )
+texture = ExtResource( 7 )
+
+[node name="artkit_17" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 32, 480 )
+texture = ExtResource( 7 )
+
+[node name="artkit_18" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 32, 544 )
+texture = ExtResource( 7 )
+
+[node name="artkit_19" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 32, 608 )
+texture = ExtResource( 7 )
+
+[node name="artkit_20" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 32, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_21" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 96, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_22" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 160, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_23" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 224, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_24" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 288, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_25" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 352, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_26" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 416, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_27" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 480, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_28" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 544, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_29" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 608, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_30" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 672, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_31" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 736, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_32" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 800, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_33" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 864, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_34" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 928, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_35" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 992, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_36" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1056, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_37" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1120, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_38" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1184, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_39" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1248, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_40" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1312, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_41" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1376, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_42" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1440, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_43" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1504, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_44" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1568, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_45" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1632, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_46" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1696, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_47" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1760, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_48" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1824, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_49" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1888, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_50" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1952, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_51" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2016, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_52" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2080, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_53" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2144, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_54" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2208, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_55" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2272, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_56" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2336, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_57" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2400, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_58" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2464, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_59" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2528, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_60" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2592, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_61" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2656, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_76" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 96, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_77" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 160, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_78" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 224, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_79" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 288, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_80" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 352, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_81" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 416, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_82" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 480, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_83" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 544, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_84" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 608, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_85" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 672, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_86" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 736, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_87" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 800, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_88" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 864, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_89" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 928, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_90" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 992, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_91" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1056, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_92" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1120, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_93" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1184, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_94" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1248, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_95" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1312, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_96" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1376, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_97" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1440, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_98" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1504, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_99" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1568, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_100" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1632, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_101" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1696, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_102" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1760, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_103" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1824, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_104" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1888, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_105" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1952, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_106" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2016, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_107" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2080, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_108" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2144, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_109" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2208, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_110" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2272, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_111" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2336, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_112" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2400, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_113" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2464, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_114" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2528, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_115" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2592, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_116" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2656, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_117" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2720, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_118" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2784, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_119" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2848, 32 )
+texture = ExtResource( 7 )
+
+[node name="artkit_62" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2720, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_63" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2784, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_64" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2848, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_65" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2912, 672 )
+texture = ExtResource( 7 )
+
+[node name="artkit_66" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2912, 608 )
+texture = ExtResource( 7 )
+
+[node name="artkit_67" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2912, 544 )
+texture = ExtResource( 7 )
+
+[node name="artkit_68" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2912, 480 )
+texture = ExtResource( 7 )
+
+[node name="artkit_69" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2912, 416 )
+texture = ExtResource( 7 )
+
+[node name="artkit_70" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2912, 352 )
+texture = ExtResource( 7 )
+
+[node name="artkit_71" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2912, 288 )
+texture = ExtResource( 7 )
+
+[node name="artkit_72" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2912, 224 )
+texture = ExtResource( 7 )
+
+[node name="artkit_73" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2912, 160 )
+texture = ExtResource( 7 )
+
+[node name="artkit_74" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2912, 96 )
+texture = ExtResource( 7 )
+
+[node name="artkit_75" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 2912, 32 )
+texture = ExtResource( 7 )
+[connection signal="hit" from="Player" to="Player" method="_on_Player_hit"]
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
